@@ -91,4 +91,10 @@ export const routes: Routes = [
         (m) => m.EditProfileComponent
       ),
   },
+  {
+    path: 'employer/edit-job',
+    loadComponent: () =>
+      import('./employer/edit-job/edit-job.component').then(m => m.EditJobComponent)
+  }
+  
 ];
