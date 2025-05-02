@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <h3 class="mb-4 text-success">Applications Received</h3>
+  <h3 class="mb-4 text-success">My Applications</h3>
 
   <div *ngIf="errorMessage" class="alert alert-danger text-center">
     {{ errorMessage }}
@@ -7,11 +7,12 @@
 
   <div *ngIf="applications.length > 0; else noApps">
     <div class="table-responsive">
-      <table class="table table-bordered table-striped">
+      <table class="table table-striped table-bordered">
         <thead class="table-light">
           <tr>
             <th>#</th>
             <th>Job Title</th>
+            <th>Employer</th>
             <th>Message</th>
             <th>Resume</th>
             <th>Applied At</th>
@@ -21,14 +22,22 @@
           <tr *ngFor="let app of applications; let i = index">
             <td>{{ i + 1 }}</td>
             <td>{{ app.jobTitle }}</td>
+            <td>{{ app.employerName }}</td>
             <td>{{ app.message }}</td>
             <td>
-              <a *ngIf="app.resumeLink" [href]="app.resumeLink" target="_blank" class="btn btn-sm btn-outline-primary">
+              <a
+                *ngIf="app.resumeLink"
+                [href]="getSafeUrl(app.resumeLink)"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-sm btn-outline-primary"
+              >
                 View Resume
               </a>
+
               <span *ngIf="!app.resumeLink" class="text-muted">N/A</span>
             </td>
-            <td>{{ app.appliedAt | date: 'short' }}</td>
+            <td>{{ app.appliedAt | date : "short" }}</td>
           </tr>
         </tbody>
       </table>
@@ -36,6 +45,14 @@
   </div>
 
   <ng-template #noApps>
-    <div class="text-muted text-center mt-4">No applications received yet.</div>
+    <div class="text-muted text-center mt-4">
+      You haven’t applied for any jobs yet.
+    </div>
   </ng-template>
+  <!-- Back to Dashboard Button -->
+  <div class="mt-4 text-start">
+    <a routerLink="/candidate/dashboard" class="btn btn-outline-secondary">
+      ← Back to Dashboard
+    </a>
+  </div>
 </div>

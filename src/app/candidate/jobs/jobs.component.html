@@ -13,10 +13,15 @@
         <div class="card-body">
           <h5 class="card-title text-success">{{ job.title }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ job.location }}</h6>
-          <p class="card-text text-truncate" style="max-height: 80px;">{{ job.description }}</p>
+          <p class="card-text text-truncate" style="max-height: 80px">
+            {{ job.description }}
+          </p>
         </div>
         <div class="card-footer text-end bg-white border-top-0">
-          <a [routerLink]="['/candidate/jobs', job.id]" class="btn btn-outline-primary btn-sm">
+          <a
+            [routerLink]="['/candidate/jobs', job.id]"
+            class="btn btn-outline-primary btn-sm"
+          >
             View Details
           </a>
         </div>
@@ -24,8 +29,18 @@
     </div>
   </div>
 
+  <!-- Back to Dashboard Button -->
+  <div class="mb-4">
+    <a routerLink="/candidate/dashboard" class="btn btn-outline-secondary">
+      ← Back to Dashboard
+    </a>
+  </div>
+
   <!-- Empty state -->
-  <div *ngIf="jobs.length === 0 && !errorMessage" class="text-muted text-center mt-4">
+  <div
+    *ngIf="jobs.length === 0 && !errorMessage"
+    class="text-muted text-center mt-4"
+  >
     No jobs available at the moment.
   </div>
 </div>
