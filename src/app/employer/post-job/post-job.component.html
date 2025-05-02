@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow rounded-4" style="max-width: 600px; margin: auto;">
+    <h3 class="mb-4 text-success text-center">Post a New Job</h3>
+
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage" class="alert alert-danger text-center">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success text-center">{{ successMessage }}</div>
+
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Job Title" />
+        <label for="title">Job Title</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <textarea class="form-control" id="description" formControlName="description" placeholder="Job Description" style="height: 120px"></textarea>
+        <label for="description">Description</label>
+      </div>
+
+      <div class="form-floating mb-4">
+        <input type="text" class="form-control" id="location" formControlName="location" placeholder="Location" />
+        <label for="location">Location</label>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success btn-lg" [disabled]="jobForm.invalid">Post Job</button>
+      </div>
+    </form>
+  </div>
+</div>

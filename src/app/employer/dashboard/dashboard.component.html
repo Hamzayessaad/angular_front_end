@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h2 class="text-primary mb-4">Welcome, {{ fullname }} 👋</h2>
+
+  <div class="row g-4">
+    <!-- Post Job -->
+    <div class="col-md-4">
+      <div class="card shadow-sm p-4 text-center bg-light rounded-4">
+        <h4 class="text-success">Post a Job</h4>
+        <p>Create a new job listing</p>
+        <a routerLink="/employer/post-job" class="btn btn-outline-success btn-sm">Go</a>
+      </div>
+    </div>
+
+    <!-- Manage Jobs -->
+    <div class="col-md-4">
+      <div class="card shadow-sm p-4 text-center bg-light rounded-4">
+        <h4 class="text-success">Manage Jobs</h4>
+        <p>Edit or delete your posted jobs</p>
+        <a routerLink="/employer/jobs" class="btn btn-outline-success btn-sm">Go</a>
+      </div>
+    </div>
+
+    <!-- Applications -->
+    <div class="col-md-4">
+      <div class="card shadow-sm p-4 text-center bg-light rounded-4">
+        <h4 class="text-success">View Applications</h4>
+        <p>Check who applied for your jobs</p>
+        <button class="btn btn-outline-secondary btn-sm" disabled>Coming Soon</button>
+      </div>
+    </div>
+  </div>
+</div>

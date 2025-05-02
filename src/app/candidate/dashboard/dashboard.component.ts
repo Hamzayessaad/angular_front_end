@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
+import { RouterModule } from '@angular/router'; // ✅ Add this
+
+
+@Component({
+  selector: 'app-candidate-dashboard',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
+})
+export class DashboardComponent implements OnInit {
+  fullname: string = '';
+
+  ngOnInit(): void {
+    const token = this.getCookie('token');
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token);
+        this.fullname = decoded.fullname || 'Candidate';
+      } catch (err) {
+        this.fullname = 'Candidate';
+      }
+    }
+  }
+
+  private getCookie(name: string): string | null {
+    const match = document.cookie.match(
+      new RegExp('(^| )' + name + '=([^;]+)')
+    );
+    return match ? match[2] : null;
+  }
+}
