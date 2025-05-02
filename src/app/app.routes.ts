@@ -61,16 +61,34 @@ export const routes: Routes = [
   {
     path: 'employer/post-job',
     loadComponent: () =>
-      import('./employer/post-job/post-job.component').then(m => m.PostJobComponent)
+      import('./employer/post-job/post-job.component').then(
+        (m) => m.PostJobComponent
+      ),
   },
   {
     path: 'candidate/jobs',
     loadComponent: () =>
-      import('./candidate/jobs/jobs.component').then(m => m.JobsComponent)
+      import('./candidate/jobs/jobs.component').then((m) => m.JobsComponent),
   },
   {
     path: 'candidate/jobs/:id',
     loadComponent: () =>
-      import('./candidate/job-details/job-details.component').then(m => m.JobDetailsComponent)
-  }
+      import('./candidate/job-details/job-details.component').then(
+        (m) => m.JobDetailsComponent
+      ),
+  },
+  {
+    path: 'candidate/profile/edit',
+    loadComponent: () =>
+      import('./candidate/edit-profile/edit-profile.component').then(
+        (m) => m.EditProfileComponent
+      ),
+  },
+  {
+    path: 'employer/profile/edit',
+    loadComponent: () =>
+      import('./employer/edit-profile/edit-profile.component').then(
+        (m) => m.EditProfileComponent
+      ),
+  },
 ];

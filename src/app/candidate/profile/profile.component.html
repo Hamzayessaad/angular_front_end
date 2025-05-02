@@ -1,6 +1,38 @@
 <div class="container mt-5">
-  <h2 class="mb-4">👤 Candidate Profile</h2>
-  <div class="card shadow p-4">
-    <p>Profile details and resume editing will be available here.</p>
+  <div *ngIf="profile; else loadingOrError" class="card shadow-lg rounded-4 p-4" style="max-width: 600px; margin: auto;">
+    <h3 class="mb-4 text-success text-center">My Profile</h3>
+
+    <ul class="list-group mb-4">
+      <li class="list-group-item d-flex justify-content-between">
+        <span><strong>Full Name</strong></span>
+        <span>{{ profile.fullname }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span><strong>Email</strong></span>
+        <span>{{ profile.email }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span><strong>Role</strong></span>
+        <span class="text-capitalize">{{ profile.role }}</span>
+      </li>
+    </ul>
+
+    <div class="text-center">
+      <a routerLink="/candidate/dashboard" class="btn btn-outline-secondary me-2">
+        ← Back to Dashboard
+      </a>
+      <a routerLink="/candidate/profile/edit" class="btn btn-primary">
+        Edit Profile
+      </a>
+    </div>
   </div>
+
+  <ng-template #loadingOrError>
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="!errorMessage" class="text-center text-muted mt-5">
+      Loading profile...
+    </div>
+  </ng-template>
 </div>
